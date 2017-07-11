@@ -1,0 +1,4 @@
+Pizza: 18
+Samosa: 19
+Sushi: 0
+Taco: 0
