@@ -31,7 +31,14 @@ void Image::ReadFile( const string& filename )
     ifstream input("/Users/ramishnadeem/Desktop/Classes/Image Filter/Image Filter/");
     input >> magicNumber;
     input.ignore();
-    //getline.headerNote("# CREATOR: GIMP PNM Filter Version 1.1"); -- Dont know how to use implement this
+    
+    
+    //Use the getline function on input to store the note “# CREATOR: GIMP PNM Filter Version 1.1” 
+    //into the headerNote variable.
+    
+    //getline.headerNote("# CREATOR: GIMP PNM Filter Version 1.1"); I DONT KNOW HOW TO IMPLEMENT THIS?
+    
+    
     input >> width >> height >> colorDepth;
     AllocateArray(width * height);
     for (int pixel = 0; pixel < pixelCount; pixel++)
@@ -72,7 +79,7 @@ void Image::PrintStats()
 /// Use the pixelArray pointer to allocate a new dynamic array
 void Image::AllocateArray( int size )
 {
-    pixelArray = new Pixel[ size ];
+    pixelArray = new Pixel[ size ];    
     pixelCount = size;
 }
 
