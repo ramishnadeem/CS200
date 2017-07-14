@@ -25,6 +25,7 @@ Image::~Image()
     DeallocateArray();
 }
 
+///HAVING PROBLEM WITH THIS CONSTRUCTOR
 /// Create an input file stream and load in the image contents
 void Image::ReadFile( const string& filename )
 {
@@ -49,6 +50,7 @@ void Image::ReadFile( const string& filename )
     
 }
 
+/// HAVING PROBLEM WITH THIS CONSTRUCTOR
 /// Create an output file stream and write out the image contents
 void Image::WriteFile( const string& filename )
 {
