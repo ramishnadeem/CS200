@@ -2,11 +2,11 @@
 
 /// Set the pixelArray to nullptr
 /**
-This is a CONSTRUCTOR function. Constructor functions
-are run immediately once a new Image variable object
-is created. Therefore, this is a good place to
-initialize member variables of our class.
-*/
+ This is a CONSTRUCTOR function. Constructor functions
+ are run immediately once a new Image variable object
+ is created. Therefore, this is a good place to
+ initialize member variables of our class.
+ */
 Image::Image()
 {
     pixelArray = nullptr;
@@ -14,32 +14,25 @@ Image::Image()
 
 /// Call the DeallocateArray function
 /**
-This is a DESTRUCTOR function. Destructor functions
-are run immediately once an Image variable is destroyed,
-such as when it goes out of scope. These are called
-automatically, so it is a good place to free up
-space and clean things up in the class.
-*/
+ This is a DESTRUCTOR function. Destructor functions
+ are run immediately once an Image variable is destroyed,
+ such as when it goes out of scope. These are called
+ automatically, so it is a good place to free up
+ space and clean things up in the class.
+ */
 Image::~Image()
 {
     DeallocateArray();
 }
 
-///HAVING PROBLEM WITH THIS CONSTRUCTOR
 /// Create an input file stream and load in the image contents
-void Image::ReadFile( const string& filename )
+void Image::ReadFile( const string& filename = "/Users/ramishnadeem/Desktop/Image Filter" ) //I have been tried fixing this, but it wont work
 {
-    ifstream input("/Users/ramishnadeem/Desktop/Classes/Image Filter/Image Filter/");
+    ifstream input;
+    input.open(filename);
     input >> magicNumber;
     input.ignore();
-    
-    
-    //Use the getline function on input to store the note “# CREATOR: GIMP PNM Filter Version 1.1” 
-    //into the headerNote variable.
-    
-    //getline.headerNote("# CREATOR: GIMP PNM Filter Version 1.1"); I DONT KNOW HOW TO IMPLEMENT THIS?
-    
-    
+    getline(input, headerNote);
     input >> width >> height >> colorDepth;
     AllocateArray(width * height);
     for (int pixel = 0; pixel < pixelCount; pixel++)
@@ -50,12 +43,12 @@ void Image::ReadFile( const string& filename )
     
 }
 
-/// HAVING PROBLEM WITH THIS CONSTRUCTOR
 /// Create an output file stream and write out the image contents
-void Image::WriteFile( const string& filename )
+void Image::WriteFile( const string& filename = "/Users/ramishnadeem/Desktop/Image Filter" ) //Same with this filename.
 {
+    
     ofstream output;
-    output.open("/Users/ramishnadeem/Desktop/Classes/Image Filter/Image Filter/Image Filter/output");
+    output.open(filename);
     output << magicNumber << endl;
     output << headerNote << endl;
     output << width << " " << height << endl;
@@ -81,7 +74,7 @@ void Image::PrintStats()
 /// Use the pixelArray pointer to allocate a new dynamic array
 void Image::AllocateArray( int size )
 {
-    pixelArray = new Pixel[ size ];    
+    pixelArray = new Pixel[ size ];
     pixelCount = size;
 }
 
@@ -188,6 +181,6 @@ void Image::Filter_Custom()
     {
         pixelArray[i].r = 100;
         pixelArray[i].b = 240;
-     }
+    }
 }
 
