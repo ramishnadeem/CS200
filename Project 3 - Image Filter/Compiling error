@@ -1,0 +1,4 @@
+libc++abi.dylib: terminating with uncaught exception of type std::bad_alloc: std::bad_alloc
+(lldb) 
+
+This is th error, I keep getting when compiling the program.
