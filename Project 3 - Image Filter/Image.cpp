@@ -26,7 +26,7 @@ Image::~Image()
 }
 
 /// Create an input file stream and load in the image contents
-void Image::ReadFile( const string& filename = "/Users/ramishnadeem/Desktop/Image Filter" ) //I have been tried fixing this, but it wont work
+void Image::ReadFile( const string& filename  )
 {
     ifstream input;
     input.open(filename);
@@ -44,7 +44,7 @@ void Image::ReadFile( const string& filename = "/Users/ramishnadeem/Desktop/Imag
 }
 
 /// Create an output file stream and write out the image contents
-void Image::WriteFile( const string& filename = "/Users/ramishnadeem/Desktop/Image Filter" ) //Same with this filename.
+void Image::WriteFile( const string& filename ) 
 {
     
     ofstream output;
