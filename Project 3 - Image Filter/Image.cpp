@@ -163,9 +163,9 @@ void Image::Filter_ShiftColors()
 		tempGreen = pixelArray[i].g;
 		tempBlue = pixelArray[i].b;
 
-		pixelArray[i].r = pixelArray[i].g;
-		pixelArray[i].g = pixelArray[i].b;
-		pixelArray[i].b = pixelArray[i].g;
+		pixelArray[i].r = tempGreen;
+		pixelArray[i].g = tempBlue;
+		pixelArray[i].b = tempRed;
 	}
 }
 
