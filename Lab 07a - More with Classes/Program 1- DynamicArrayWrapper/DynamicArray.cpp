@@ -26,7 +26,7 @@ void DynamicArray::Set(int index, string value)
 		return;
 	}
 
-	value = m_arr[index];
+	m_arr[index] = value;
 
 }
 
@@ -38,11 +38,7 @@ string DynamicArray::Get(int index)
 		return "";
 	}
 
-	if (index > 0 || index <= m_size)
-	{
-		return m_arr[index];
-	}
-	
+	return m_arr[index];
 }
 
 int DynamicArray::GetSize()
