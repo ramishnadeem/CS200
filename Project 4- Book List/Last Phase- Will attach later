@@ -1,0 +1,46 @@
+void Library::SaveData()
+{
+    ofstream output;
+    output.open ( "books.txt" );
+    for (int i = 0; i < m_bookCount; i++)
+    {
+        output << "BOOK" << i << endl;
+        output << m_bookList[i].GetTitle() << endl;
+        output << m_bookList[i].GetAuthor() << endl;
+        output << m_bookList[i].GetReadingStatus() << endl;
+        output << m_bookList[i].GetPurchaseStatus() << endl;
+    }
+    
+    output.close();
+}
+
+void Library::LoadData()
+{
+    ifstream input ( "books.txt" );
+    string header;
+    string title, author;
+    int rs, ps;
+
+    while (input >> header)
+    {
+        input.ignore();
+        getline(input, title);
+        getline(input, author);
+        input >> rs;
+        input >> ps;
+        if (IsArrayFull())
+        {
+            ResizeArray();
+        }
+        
+        m_bookList[m_bookCount].SetBookInfo(title, author);
+        m_bookList[m_bookCount].SetPurchaseStatus(PurchaseStatus(ps));
+        m_bookList[m_bookCount].SetReadingStatus(ReadingStatus(rs));
+        
+        m_bookCount++;
+    }
+    
+    input.close();
+}
+
+
