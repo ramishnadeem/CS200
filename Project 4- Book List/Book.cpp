@@ -21,10 +21,12 @@ void Book::SetPurchaseStatus(PurchaseStatus ps)
 
 void Book::DisplayBook()
 {
-	cout << m_title;
-	cout << m_author;
-	cout << GetPurchaseStatusString();
-	cout << GetReadingStatusString();
+	cout << endl;
+	cout << m_title << endl;
+	cout << m_author << endl;
+	cout << GetPurchaseStatusString() << endl;
+	cout << GetReadingStatusString() << endl;
+	cout << endl;
 }
 
 string Book::GetTitle()
@@ -44,9 +46,9 @@ int Book::GetReadingStatus()
 
 string Book::GetReadingStatusString()
 {
-	if (m_readingStatus == NOT_STARTED )
+	if (m_readingStatus == NOT_STARTED)
 	{
-		return "Not Started";		
+		return "Not Started";
 	}
 	else if (m_readingStatus == READING)
 	{
@@ -56,7 +58,8 @@ string Book::GetReadingStatusString()
 	{
 		return "Finished";
 	}
-	
+
+	return "";
 }
 
 
@@ -73,6 +76,8 @@ string Book::GetPurchaseStatusString()
 	}
 	else if (m_purchaseStatus == WISHLIST)
 	{
-		return ("Wishlist");
+		return "Wishlist";
 	}
+
+	return "";
 }
