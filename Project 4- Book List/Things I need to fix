@@ -4,15 +4,22 @@
 2. Line 123- NewBook()- Function
   The input for name and author wont take take space-
   EX. The program crashes if you enter- Science Book
+  ----DONE;
   
 3. UpdateBook()- Function
   How to update just the name or author. 
   If user updates name then author is left empty
+  ---DONE;
   
 4. ViewStats()- Function
   How to increment the variables
+  ----DONE;
+ 
+ 
  
  IF I USE THE m_bookCount - 1; no output is shown
+ ---DONE;
  
  The program also throws a exception at the GetReadingStatus()- Function
  Exits with a code 9.
+ ----DONE;
