@@ -30,7 +30,7 @@ void Library::DeallocateMemory()
 
 void Library::AllocateMemory(int size)
 {
-	if (m_bookList == nullptr)
+	if (m_bookList != nullptr)
 	{
 		DeallocateMemory();
 		m_bookList = new Book[size];
