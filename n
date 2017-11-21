@@ -1,0 +1,104 @@
+{
+		Node<TK, TD>* deleteMe = FindNode(key);
+		Node<TK, TD>* parent = FindParentOfNode(key);
+		bool isLeftNode = (parent->ptrLeft == deleteMe);
+
+		if (deleteMe == nullptr)
+		{
+			cout << "deleteMe is nullptr" << endl;
+			return;
+		}
+
+		if (deleteMe->ptrLeft == nullptr && deleteMe->ptrRight == nullptr)
+		{
+			//cout << "No children" << endl;
+			// Node is a leaf: No children
+			if (deleteMe == m_ptrRoot)
+			{
+				m_ptrRoot = nullptr;
+			}
+			else if (isLeftNode)
+			{
+				parent->ptrLeft = nullptr;
+			}
+			else
+			{
+				parent->ptrRight = nullptr;
+			}
+		}
+		else if (deleteMe->ptrLeft == nullptr)
+		{
+			//cout << "No left children" << endl;
+			// Node has no left children
+			if (deleteMe == m_ptrRoot)
+			{
+				m_ptrRoot = deleteMe->ptrRight;
+			}
+			else if (isLeftNode)
+			{
+				parent->ptrLeft = deleteMe->ptrRight;
+			}
+			else
+			{
+				parent->ptrRight = deleteMe->ptrRight;
+			}
+		}
+		else if (deleteMe->ptrRight == nullptr)
+		{
+			//cout << "No right children" << endl;
+			// Node has no right children
+			if (deleteMe == m_ptrRoot)
+			{
+				m_ptrRoot = deleteMe->ptrLeft;
+			}
+			else if (isLeftNode)
+			{
+				parent->ptrLeft = deleteMe->ptrLeft;
+			}
+			else
+			{
+				parent->ptrRight = deleteMe->ptrLeft;
+			}
+		}
+		else
+		{
+			//cout << "Two children" << endl;
+			// Node has left and right children
+			Node<TK, TD>* tempNode = deleteMe->ptrRight;
+			Node<TK, TD>* successor = deleteMe;
+			Node<TK, TD>* successorParent = deleteMe;
+			while (tempNode != nullptr)
+			{
+				successorParent = successor;
+				successor = tempNode;
+				tempNode = tempNode->ptrLeft;
+			}
+
+			if (successor != deleteMe->ptrRight)
+			{
+				successorParent->ptrLeft = successor->ptrRight;
+				successor->ptrRight = deleteMe->ptrRight;
+			}
+
+			if (deleteMe == m_ptrRoot)
+			{
+				m_ptrRoot = successor;
+			}
+			else if (isLeftNode)
+			{
+				deleteMe = parent->ptrLeft;
+				parent->ptrLeft = successor;
+			}
+			else
+			{
+				deleteMe = parent->ptrRight;
+				parent->ptrRight = successor;
+			}
+			successor->ptrLeft = deleteMe->ptrLeft;
+		}
+
+		deleteMe->ptrLeft = nullptr;
+		deleteMe->ptrRight = nullptr;
+		delete deleteMe;
+		m_nodeCount--;
+	}
